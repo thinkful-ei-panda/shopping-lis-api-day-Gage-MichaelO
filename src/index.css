@@ -1,15 +1,19 @@
 * {
   box-sizing: border-box;
+  
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   width: 85%;
   margin: 0 auto;
+  background-color: darkslategray;
 }
 
 button, input[type="text"] {
   padding: 5px;
+  background-color: floralwhite;
+  border-radius:  8px;
 }
 
 button:hover {
@@ -32,12 +36,14 @@ button:hover {
 .shopping-list {
   list-style: none;
   padding-left: 0;
+  
 }
 
 .shopping-list > li {
   margin-bottom: 20px;
   border: 1px solid grey;
   padding: 20px;
+  background-color: rgb(83, 83, 83);
 }
 
 .shopping-item {
@@ -46,6 +52,7 @@ button:hover {
   font-style: italic;
   font-size: 20px;
   margin-bottom: 15px;
+  
 }
 
 .shopping-item__checked {

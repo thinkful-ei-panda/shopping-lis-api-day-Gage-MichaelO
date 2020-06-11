@@ -1,34 +1,21 @@
-import item from './item';
+import api from './api';
+
+const error = null; 
 
 const items = [];
-let hideCheckeditems = false;
+let hideCheckedItems = false;
 
 const findById = function (id) {
   return this.items.find(currentItem => currentItem.id === id);
 };
 
-const addItem = function (name) {
-  try {
-    item.validateName(name);
-    this.items.push(item.create(name));
-  } catch (e) {
-    console.log(e.message);
-  }
+const addItem = function (item) {
+  this.items.push(item);
 };
 
-const findAndToggleChecked = function (id) {
+const findAndUpdate = function(id, newData){
   const currentItem = this.findById(id);
-  currentItem.checked = !currentItem.checked;
-};
-
-const findAndUpdateName = function (id, name) {
-  try {
-    item.validateName(name);
-    const currentItem = this.findById(id);
-    currentItem.name = name;
-  } catch (e) {
-    console.log('Cannot update name: ' + e.message);
-  }
+  Object.assign(currentItem ,newData);
 };
 
 const findAndDelete = function (id) {
@@ -39,13 +26,17 @@ const toggleCheckedFilter = function () {
   this.hideCheckedItems = !this.hideCheckedItems;
 };
 
+const setError = function(error){
+  this.error = error;
+}
+
 export default {
   items,
-  hideCheckeditems,
+  hideCheckedItems: hideCheckedItems,
   findById,
   addItem,
-  findAndToggleChecked,
-  findAndUpdateName,
+  findAndUpdate,
   findAndDelete,
-  toggleCheckedFilter
+  toggleCheckedFilter,
+  setError,
 };
